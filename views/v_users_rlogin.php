@@ -23,7 +23,7 @@
 
 	<div id="navi">
 		<ul id="navi_ul"><li>
-			<a href="http://p2.christophermorse.org/about/">About</a></li><li><a href="">Contact</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
+			<a href="http://p2.christophermorse.org/about.html">About</a></li><li><a href="http://p1.christophermorse.org">Author</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
 		</div>
 	</body>
 
