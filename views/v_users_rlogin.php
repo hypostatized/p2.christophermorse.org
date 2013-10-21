@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Shaberi</title>
 	<link rel="stylesheet" type="text/css" href="../shaberi.css">
 </head>
 
 <body><br><br>
 	<div id="radial">
-		<img src="../images/shaberi.png">
+		<img src="../images/shaberi.png" alt="shaberi">
 		<div id="radial_center">
 			<span id="failtext">Your login information was incorrect, please try again.</span> <br><br>
 
