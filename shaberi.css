@@ -1,0 +1,103 @@
+
+a:link, a:visited, a:active {
+	color:#436AA9;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #93DB70;
+	text-decoration: none;
+}
+
+body {
+	font-family: "Essays1743";
+	background-image:url('images/geometry.png');
+}
+
+@font-face {
+	font-family: "Essays1743";
+	src: url('fonts/Essays1743.ttf') format("truetype");
+}
+
+h2, h3 { 
+	font-family: "Essays1743";
+	display: inline;
+}
+
+input[type=text], input[type=password] {
+
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	padding: 3px;
+	background-color: rgba(67,106,169,.5); 
+	color: white;
+	font-size: 15px;
+	border: none;
+	width: 200px;
+	margin-left: 0px;
+	float: right;
+}
+
+#create, #new_acct {
+
+	border: none;
+	background-color: rgba(67,106,169,.5);
+	color: white;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	height: 25px;
+	width: 100px;
+	margin-left: 100px;
+}
+
+#login {
+
+	border: none;
+	background-color: rgba(67,106,169,.5);
+	margin-left: 68px;
+	color: white;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	height: 25px;
+	width: 75px;
+	float: right;
+}
+
+#navi {
+
+	text-align: center;
+
+}
+
+#navi_ul li {
+
+	display: inline;
+	font-size: 1.2em;
+	padding: 25px;
+}
+
+#navi_ul {
+
+	padding-left: 0;
+	margin: auto;
+
+}
+
+#radial {
+	width: 500px;
+	height: 500px;
+	background: #93DB70;
+	-moz-border-radius: 500px;
+	-webkit-border-radius: 500px;
+	border-radius: 500px;
+	margin: auto;
+}
+
+#radial_center {
+	margin-left: 100px;
+	margin-right: 100px;
+
+}

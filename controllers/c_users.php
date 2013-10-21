@@ -11,7 +11,26 @@ class users_controller extends base_controller {
     }
 
     public function signup() {
-        echo "This is the signup page";
+
+        #set up the view
+        $this->template->content = View::instance('v_users_signup');
+    
+        #render the view
+        echo $this->template;    }
+
+    public function p_signup() {
+
+        #echo "<pre>";
+        #print_r($_POST);
+        #echo "<pre>";
+
+        $_POST['created'] = Time::now();
+        $_POST['password'] = sha1($_POST['password']);
+
+        DB::instance(DB_NAME)->insert_row('users', $_POST);
+
+        Router::redirect('/users/signup');
+
     }
 
     public function login() {
@@ -24,15 +43,30 @@ class users_controller extends base_controller {
 
     public function profile($user_name = NULL) {
 
-        if($user_name == NULL) {
-            echo "No user specified";
-        }
-        else {
-            echo "This is the profile for ".$user_name;
-        }
+        #$view = View::instance('v_users_profile');
+        #$view->user_name = $user_name;
+        #echo $view;
+        
+        # set up template view
+        $this->template->content = View::instance('v_users_profile');
+        $this->template->title = "Profile";
+        
+        $client_files_head = Array('/css/profile.css', '/css/master.css');
+        $this->template->client_files_head = Utils::load_client_files($client_files_head);
+        
+        $client_files_body = Array('/css/profile.css', '/css/master.css');
+        $this->template->client_files_body = Utils::load_client_files($client_files_body);
+    
+        $this->template->content->user_name = $user_name;
+        
+        # display view
+        echo $this->template;
+        
+        
     }
 
 } # end of the class
+
 
 #admin_users
 #search_controller
@@ -44,3 +78,5 @@ class users_controller extends base_controller {
 #pass in parameters: p2.christophermorse.org/users/profile/chris
 #$_GET['ship_on_sunday'] --> p2.christophermorse.org/users/profile/chris?ship_on_sunday=true
 #public function shipping($shippingtype, $giftwrap)
+
+?>
