@@ -9,18 +9,14 @@
 	<div id="radial">
 		<img src="../images/shaberi.png">
 		<div id="radial_center">
-			Welcome to <h3>Shaberi</h3>, microcommunication for the new age. <br><br>
+			Please log in: <br><br>
 
 			<form method="POST" action="/users/p_login">
 				Username: <input type="text" name="username" class="page_form"><br>
 				Password: <input type="password" name="password" class="page_form"><br>
 				<input type="submit" value="Log in" id="login">
 			</form>
-			<br><br>
 
-			<form action="/users/signup">
-				<input type="submit" value="Create Account" id="create">
-			</form>
 		</div>
 	</div>
 

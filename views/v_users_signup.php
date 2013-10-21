@@ -11,7 +11,7 @@
 		<div id="radial_center">
 			Please fill out the form to join Shaberi.<br><br>
 
-			<form method='POST' action='/users/p_signup'>
+			<form  method="POST" action="/users/p_signup">
 				First Name <input type='text' name='first_name' class="page_form"><br>
 				Last Name <input type='text' name='last_name' class="page_form"><br>
 				Username <input type='text' name='username' class="page_form"><br>

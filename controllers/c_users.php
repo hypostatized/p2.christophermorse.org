@@ -13,34 +13,82 @@ class users_controller extends base_controller {
 
     public function signup() {
 
-        # set up the view
         $this->template->content = View::instance('v_users_signup');
-    
-        # render the view
-        echo $this->template;    
+        echo $this->template;  
     }
 
     public function p_signup() {
 
-        #echo "<pre>";
-        #print_r($_POST);
-        #echo "<pre>";
-
+        # set time of creation
+        # hash password and login token for cookie
         $_POST['created'] = Time::now();
-        $_POST['password'] = sha1($_POST['password']);
+        $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+        $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
-        DB::instance(DB_NAME)->insert_row('users', $_POST);
-
-        Router::redirect('index');
+        #add user
+        $user_id = DB::instance(DB_NAME)->insert("users", $_POST);
+        // DB::instance(DB_NAME)->insert_row('users', $_POST);
+        echo "You're signed up.";
+        // Router::redirect('/users/login');
 
     }
 
     public function login() {
-        echo "This is the login page";
+
+        $this->template->content = View::instance('v_users_login');
+        echo $this->template;
+    }
+
+    public function rlogin() {
+
+        $this->template->content = View::instance('v_users_rlogin');
+        echo $this->template;        
+    }
+
+    public function p_login() {
+
+        # sanitize user entry data
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+        # hash password for comparison with DB
+        $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+
+        # search database for username and password that match
+        # retrieve token if exists
+
+        $q = "SELECT token FROM users WHERE username = '".$_POST['username']."' AND password = '".$_POST['password']."'";
+        echo DB::instance(DB_NAME)->select_field($q);
+
+        # set cookie or redirect back to login page if failed
+        if (!$token) {
+
+            Router::redirect("/users/rlogin");
+        }
+        else {
+
+            setCookie("shaberi", $token, strtotime('+1 year'), '/');
+            Router::redirect("/");
+        }
+
     }
 
     public function logout() {
-        echo "This is the logout page";
+        
+        # Generate and save a new token for next login
+        $new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
+
+        # Create the data array we'll use with the update method
+        # In this case, we're only updating one field, so our array only has one entry
+        $data = Array("token" => $new_token);
+
+        # Do the update
+        DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token."'");
+
+        # Delete their token cookie by setting it to a date in the past - effectively logging them out
+        setcookie("shaberi", "", strtotime('-1 year'), '/');
+
+        # Send them back to the main index.
+        Router::redirect("/");
     }
 
     public function profile($user_name = NULL) {
