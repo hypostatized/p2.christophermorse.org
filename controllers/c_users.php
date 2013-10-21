@@ -3,20 +3,22 @@ class users_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
-        echo "users_controller construct called<br><br>";
     } 
 
     public function index() {
-        echo "This is the index page";
+        
+        $this->template->content = View::instance('v_index_index');
+        echo $this->template;
     }
 
     public function signup() {
 
-        #set up the view
+        # set up the view
         $this->template->content = View::instance('v_users_signup');
     
-        #render the view
-        echo $this->template;    }
+        # render the view
+        echo $this->template;    
+    }
 
     public function p_signup() {
 
@@ -29,7 +31,7 @@ class users_controller extends base_controller {
 
         DB::instance(DB_NAME)->insert_row('users', $_POST);
 
-        Router::redirect('/users/signup');
+        Router::redirect('index');
 
     }
 

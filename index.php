@@ -23,7 +23,7 @@
 
 # Routing
     Router::$routes = array(
-    	'/' => '/shaberi.html',     # default controller when "/" is requested
+    	'/' => '/index',     # default controller when "/" is requested
     );
     
 # Match requested uri to any routes and instantiate controller
