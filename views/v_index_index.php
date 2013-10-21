@@ -2,7 +2,6 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Shaberi</title>
 	<link rel="stylesheet" type="text/css" href="../shaberi.css">
 </head>
 
@@ -27,7 +26,7 @@
 
 	<div id="navi">
 		<ul id="navi_ul"><li>
-			<a href="http://p2.christophermorse.org/about/">About</a></li><li><a href="">Contact</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
+			<a href="http://p2.christophermorse.org/about.html">About</a></li><li><a href="">Contact</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
 		</div>
 	</body>
 
