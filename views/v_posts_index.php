@@ -1,15 +1,22 @@
-<?php foreach($posts as $post): ?>
+<div id="butterflies">
+	<ul class="navi_ul"><li>
+		<a href="http://p2.christophermorse.org/">Home</a></li><li><a href="http://p2.christophermorse.org/posts/add">Post</a></li><li><a href="http://p2.christophermorse.org/users/logout">Log out</a></li></ul>
+	</div>
 
-<article>
+	<?php foreach($posts as $post): ?>
+		<br><br>
+		<article class="post">
+			<img src="../images/shaberi.png" alt="shaberi" class="post_logo">
+			<h2><?=$post['username']?>:</h2><br>
 
-    <h1><?=$post['username']?> posted:</h1>
+			<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+				<?=Time::display($post['created'])?>
+			</time>
 
-    <p><?=$post['content']?></p>
+			<p><?=$post['content']?></p>
 
-    <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-        <?=Time::display($post['created'])?>
-    </time>
+		</article><br>
 
-</article>
+	<?php endforeach; ?>
 
-<?php endforeach; ?>
+
