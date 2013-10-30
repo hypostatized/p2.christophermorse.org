@@ -6,7 +6,7 @@ class users_controller extends base_controller {
     } 
 
     public function index() {
-        
+
         $this->template->content = View::instance('v_index_index');
         echo $this->template;
     }
@@ -36,6 +36,7 @@ class users_controller extends base_controller {
     public function login() {
 
         $this->template->content = View::instance('v_users_login');
+        $this->template->title = "Login";
         echo $this->template;
     }
 
@@ -56,24 +57,29 @@ class users_controller extends base_controller {
         # search database for username and password that match
         # retrieve token if exists
 
-        $q = "SELECT token FROM users WHERE username = '".$_POST['username']."' AND password = '".$_POST['password']."'";
-        echo DB::instance(DB_NAME)->select_field($q);
+        $q = "SELECT token 
+        FROM users 
+        WHERE username = '".$_POST['username']."' 
+        AND password = '".$_POST['password']."'";
 
-        # set cookie or redirect back to login page if failed
-        if (!$token) {
+        $token = DB::instance(DB_NAME)->select_field($q);
 
-            Router::redirect("/users/rlogin");
+        if(!$token) {
+
+            Router::redirect("/users/login");
         }
+
         else {
 
-            setCookie("shaberi", $token, strtotime('+1 year'), '/');
-            Router::redirect("/");
+        setcookie("token", $token, strtotime('+1 year'), '/');
+        Router::redirect("/users/profile");
+
         }
 
     }
 
     public function logout() {
-        
+
         # Generate and save a new token for next login
         $new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 
@@ -82,51 +88,29 @@ class users_controller extends base_controller {
         $data = Array("token" => $new_token);
 
         # Do the update
-        DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token."'");
+        DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
 
         # Delete their token cookie by setting it to a date in the past - effectively logging them out
-        setcookie("shaberi", "", strtotime('-1 year'), '/');
+        setcookie("token", "", strtotime('-1 year'), '/');
 
         # Send them back to the main index.
         Router::redirect("/");
     }
 
-    public function profile($user_name = NULL) {
+    public function profile() {
 
-        #$view = View::instance('v_users_profile');
-        #$view->user_name = $user_name;
-        #echo $view;
-        
-        # set up template view
+    # If user is blank, they're not logged in; redirect them to the login page
+        if(!$this->user) {
+            Router::redirect('/users/login');
+        }
+        else {
         $this->template->content = View::instance('v_users_profile');
-        $this->template->title = "Profile";
-        
-        $client_files_head = Array('/css/profile.css', '/css/master.css');
-        $this->template->client_files_head = Utils::load_client_files($client_files_head);
-        
-        $client_files_body = Array('/css/profile.css', '/css/master.css');
-        $this->template->client_files_body = Utils::load_client_files($client_files_body);
-    
-        $this->template->content->user_name = $user_name;
-        
-        # display view
+        $this->template->title = "Profile of".$this->user->username;
         echo $this->template;
-        
+        }
         
     }
 
-} # end of the class
-
-
-#admin_users
-#search_controller
-#follow_user
-#unfollow_user
-#posts_new } posts controller
-#posts_edit } posts controller
-#posts_delete } posts controller
-#pass in parameters: p2.christophermorse.org/users/profile/chris
-#$_GET['ship_on_sunday'] --> p2.christophermorse.org/users/profile/chris?ship_on_sunday=true
-#public function shipping($shippingtype, $giftwrap)
+}
 
 ?>

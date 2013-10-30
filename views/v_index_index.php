@@ -1,3 +1,6 @@
+<?php if ($user): ?>
+	<? Router::redirect('/users/profile'); ?>
+<?php else: ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,3 +34,4 @@
 	</body>
 
 	</html>
+<?php endif;?>
