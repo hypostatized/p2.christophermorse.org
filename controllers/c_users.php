@@ -8,12 +8,14 @@ class users_controller extends base_controller {
     public function index() {
 
         $this->template->content = View::instance('v_index_index');
+        $this->template->title = "Shaberi";
         echo $this->template;
     }
 
     public function signup() {
 
         $this->template->content = View::instance('v_users_signup');
+        $this->template->title = "Sign up";
         echo $this->template;  
     }
 
@@ -22,28 +24,22 @@ class users_controller extends base_controller {
         # set time of creation
         # hash password and login token for cookie
         $_POST['created'] = Time::now();
+        $_POST['avatar'] = "/uploads/avatars/shaberi.png";
         $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
         $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
         #add user
         $user_id = DB::instance(DB_NAME)->insert("users", $_POST);
-        // DB::instance(DB_NAME)->insert_row('users', $_POST);
-        echo "You're signed up.";
-        // Router::redirect('/users/login');
+        Router::redirect('/users/login');
 
     }
 
-    public function login() {
+    public function login($error = NULL) {
 
         $this->template->content = View::instance('v_users_login');
         $this->template->title = "Login";
+        $this->template->content->error = $error;
         echo $this->template;
-    }
-
-    public function rlogin() {
-
-        $this->template->content = View::instance('v_users_rlogin');
-        echo $this->template;        
     }
 
     public function p_login() {
@@ -66,7 +62,7 @@ class users_controller extends base_controller {
 
         if(!$token) {
 
-            Router::redirect("/users/login");
+            Router::redirect("/users/login/error");
         }
 
         else {
@@ -106,9 +102,92 @@ class users_controller extends base_controller {
         else {
         $this->template->content = View::instance('v_users_profile');
         $this->template->title = "Profile of".$this->user->username;
+
+
+    $q = 'SELECT
+        posts.content,
+        posts.created,
+        posts.user_id,
+        posts.avatar
+        FROM posts
+        WHERE posts.user_id = '.$this->user->user_id .'
+        ORDER BY posts.created DESC' ;
+        
+
+    # Run the query, store the results in the variable $posts
+    $posts = DB::instance(DB_NAME)->select_rows($q);
+
+    # Pass data to the View
+    $this->template->content->posts = $posts;
+
+    # Render the View
         echo $this->template;
         }
         
+    }
+
+    public function myImg() {
+
+        if(!$this->user) {
+            Router::redirect('/users/login');
+        }
+        else {
+
+        $this->template->content = View::instance('v_users_myImg');
+        $this->template->title = "Upload a Profile Picture";
+        echo $this->template;  
+        }
+    }
+
+    public function pMyImg() {
+
+        if(!$this->user) {
+            Router::redirect('/users/login');
+        }
+        else {
+            $allowedExts = array("gif", "jpeg", "jpg", "png");
+            $temp = explode(".", $_FILES["file"]["name"]);
+            $extension = end($temp);
+            if ((($_FILES["file"]["type"] == "image/gif")
+                || ($_FILES["file"]["type"] == "image/jpeg")
+                || ($_FILES["file"]["type"] == "image/jpg")
+                || ($_FILES["file"]["type"] == "image/pjpeg")
+                || ($_FILES["file"]["type"] == "image/x-png")
+                || ($_FILES["file"]["type"] == "image/png"))
+                && ($_FILES["file"]["size"] < 400000)
+                && in_array($extension, $allowedExts))
+            {
+                if ($_FILES["file"]["error"] > 0)
+                {
+                    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+                }
+                else
+                {
+                    echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+                    echo "Type: " . $_FILES["file"]["type"] . "<br>";
+                    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+                    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+
+                    if (file_exists("/uploads/avatars/" . $_FILES["file"]["name"]))
+                    {
+                        echo $_FILES["file"]["name"] . " already exists. ";
+                    }
+                    else
+                    {
+                        move_uploaded_file($_FILES["file"]["tmp_name"],
+                            "/Users/christophermorse/Sites/p2.christophermorse.org/uploads/avatars/" . $_FILES["file"]["name"]);
+                        $filename = $_FILES["file"]["name"];
+                        $avatar = Array("avatar" => $filename);
+                        DB::instance(DB_NAME)->update("users", $avatar, "WHERE user_id = '".$this->user->user_id."'");
+                        echo "Stored in: " . "/uploads/avatars/" . $_FILES["file"]["name"];
+                    }
+                }
+            }
+            else
+            {
+                echo "Invalid file";
+            }
+        }
     }
 
 }

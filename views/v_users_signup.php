@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Shaberi: Create Account</title>
-	<link rel="stylesheet" type="text/css" href="../shaberi.css">
-</head>
-
-<body><br><br>
+<br><br>
 	<div id="radial">
-		<img src="../images/shaberi.png" alt="shaberi">
+		<img src="/images/shaberi.png" alt="shaberi">
 		<div id="radial_center">
 			Please fill out the form to join Shaberi.<br><br>
 
@@ -25,10 +17,7 @@
 		</div>
 	</div>
 
-	<div class="navi">
-		<ul class="navi_ul"><li>
+	<div id="navi">
+		<ul id="navi_ul"><li>
 			<a href="http://p2.christophermorse.org/about.html">About</a></li><li><a href="http://p1.christophermorse.org">Author</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
 		</div>
-	</body>
-
-	</html>

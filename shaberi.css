@@ -47,13 +47,13 @@ body {
 	margin-left: 100px;
 }
 
-#failtext {
+.failtext {
 
 	color: red;
 }
 @font-face {
 	font-family: "Essays1743";
-	src: url('fonts/Essays1743.ttf') format("truetype");
+	src: url('/fonts/Essays1743.ttf') format("truetype");
 }
 
 h2, h3 { 

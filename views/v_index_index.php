@@ -4,9 +4,9 @@
 
 	<br><br>
 	<div id="radial">
-		<img src="../images/shaberi.png" alt="shaberi">
+		<img src="/images/shaberi.png" alt="shaberi">
 		<div id="radial_center">
-			Welcome to <h3>Shaberi</h3>, microcommunication for the new age. <br><br>
+			Welcome to <h3>Shaberi</h3>, microcommunication for the new age.<br><br>
 
 			<form method="POST" action="/users/p_login">
 				Username: <input type="text" name="username" class="page_form"><br>
@@ -21,9 +21,11 @@
 		</div>
 	</div>
 
-	<div class="navi">
-		<ul class="navi_ul"><li>
+	<div id="navi">
+		<ul id="navi_ul"><li>
 			<a href="http://p2.christophermorse.org/about.html">About</a></li><li><a href="http://p1.christophermorse.org/">Author</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
+		+1: Add a profile photo<br>
+		+1: Something else
 		</div>
 
 	<?php endif;?>

@@ -5,25 +5,21 @@ a:link, a:visited, a:active {
 }
 
 a:hover {
+
 	color: #93DB70;
 	text-decoration: none;
 }
 
 body {
+
+	background-image:url('/images/geometry.png');
 	font-family: "Essays1743";
-	background-image:url('images/geometry.png');
 }
 
-#butterflies {
-
-	background-image:url('/images/butterflies.png');
-	background-repeat: no-repeat;
-	float: right;
-	height: 100%;
-	margin-left: 10%;
+.bottomnav {
 	position: fixed;
-	text-indent: 90px;
-	width: 100%;
+	text-align: center;
+	margin-left: 65%;
 }
 
 #content {
@@ -47,16 +43,41 @@ body {
 	margin-left: 100px;
 }
 
-#failtext {
+.failtext {
 
 	color: red;
 }
-@font-face {
-	font-family: "Essays1743";
-	src: url('fonts/Essays1743.ttf') format("truetype");
+
+.followImg {
+	margin: auto;
+	background-repeat: no-repeat;
+	background-size: 75px 75px;
+	height: 75px;
+	width: 75px;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	border-radius: 75px;
 }
 
-h2, h3 { 
+.followInfo {
+
+	margin: auto;
+	text-align: center;
+}
+
+#followTable, td {
+	margin: auto;
+	padding-top: 10px;
+	padding-left: 25px;
+	padding-right: 25px;
+	text-align: center;
+}
+@font-face {
+	font-family: "Essays1743";
+	src: url('/fonts/Essays1743.ttf') format("truetype");
+}
+
+h2, h3, h4, h5 { 
 	font-family: "Essays1743";
 	display: inline;
 }
@@ -73,7 +94,7 @@ h2, h3 {
 	border: none;
 	width: 200px;
 	margin-left: 0px;
-	float: right;
+	float: inherit;
 }
 
 #post_buttons {
@@ -103,13 +124,17 @@ h2, h3 {
 	float: right;
 }
 
-.navi {
+#myPosts {
+
+	margin-left: 65%;
+}
+#navi {
 
 	text-align: center;
 
 }
 
-.navi_ul li {
+#navi_ul li {
 
 	display: inline;
 	font-size: 1.2em;
@@ -128,20 +153,21 @@ h2, h3 {
 	background: #93DB70;
 	border-radius: 250px;
 	color: #333333;
-	float: inherit;
 	font-size: .90em;
 	height: 250px;
-	margin-left: 60%;
 	-moz-border-radius: 250px;
 	text-align: center;
 	-webkit-border-radius: 250px;
 	width: 250px;
 }
 
-.post_logo {
+.sm_avatar {
 
 	float: left;
 	height: 75px;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	border-radius: 75px;
 	width: 75px;
 }
 
@@ -159,4 +185,38 @@ h2, h3 {
 	margin-left: 100px;
 	margin-right: 100px;
 	text-align: justify;
+}
+
+#radial_profile {
+
+	width: 500px;
+	height: 500px;
+	background: #93DB70;
+	-moz-border-radius: 500px;
+	-webkit-border-radius: 500px;
+	border-radius: 500px;
+	position: fixed;
+
+}
+
+#radial_profile_img {
+
+	float: left;
+	height: 150px;
+	width: 150px;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
+
+
+}
+
+.reg_avatar {
+
+	float: left;
+	height: 150px;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
+	width: 150px;
 }

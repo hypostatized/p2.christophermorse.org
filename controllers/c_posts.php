@@ -6,7 +6,7 @@ class posts_controller extends base_controller {
 
         # Make sure user is logged in if they want to use anything in this controller
         if(!$this->user) {
-            die("Members only. <a href='/users/login'>Login</a>");
+            Router::redirect('/users/login');
         }
     }
 
@@ -42,6 +42,7 @@ class posts_controller extends base_controller {
 
         # Associate this post with this user
         $_POST['user_id']  = $this->user->user_id;
+        $_POST['avatar'] = $this->user->avatar; 
 
         # Unix timestamp of when this post was created / modified
         $_POST['created']  = Time::now();
@@ -68,6 +69,7 @@ public function index() {
         posts.created,
         posts.user_id AS post_user_id,
         users_users.user_id AS follower_id,
+        posts.avatar,
         users.username
         FROM posts 
         INNER JOIN users_users
