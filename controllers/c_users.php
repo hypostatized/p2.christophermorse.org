@@ -204,7 +204,7 @@ class users_controller extends base_controller {
                         $filename = $_FILES["file"]["tmp_name"];
                         $avatar = Array("avatar" => $filename);
                         DB::instance(DB_NAME)->update("users", $avatar, "WHERE user_id = '".$this->user->user_id."'");
-                        Router::redirect('/users/profile')
+                        Router::redirect('/users/profile');
                     }
                 }
             }
