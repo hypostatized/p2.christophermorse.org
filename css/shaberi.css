@@ -1,222 +1,203 @@
-
-a:link, a:visited, a:active {
+a:link,a:visited,a:active {
 	color:#436AA9;
-	text-decoration: none;
+	text-decoration:none;
 }
 
 a:hover {
-
-	color: #93DB70;
-	text-decoration: none;
+	color:#93DB70;
+	text-decoration:none;
 }
 
 body {
-
-	background-image:url('/images/geometry.png');
-	font-family: "Essays1743";
+	background-image:url(/images/geometry.png);
+	font-family:Essays1743;
 }
 
-.bottomnav {
-	position: fixed;
-	text-align: center;
-	margin-left: 65%;
+.content {
+	background-color:rgba(67,106,169,.5);
+	color:#FFF;
+	float: right;
+	height:100px;
+	margin-left:25px;
+	width:250px;
 }
 
-#content {
-	background-color: rgba(67,106,169,.5); 
-	color: white;
-	height: 100px;
-	margin-left: 25px;
-	width: 250px;
-}
-
-#create, #new_acct {
-
-	border: none;
-	background-color: rgba(67,106,169,.5);
-	color: white;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	height: 25px;
-	width: 100px;
-	margin-left: 100px;
+#create,#new_acct {
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	background-color:rgba(67,106,169,.5);
+	border:none;
+	border-radius:8px;
+	color:#FFF;
+	height:25px;
+	margin-left:100px;
+	width:100px;
 }
 
 .failtext {
-
-	color: red;
+	color:red;
 }
 
 .followImg {
-	margin: auto;
-	background-repeat: no-repeat;
-	background-size: 75px 75px;
-	height: 75px;
-	width: 75px;
-	-moz-border-radius: 75px;
-	-webkit-border-radius: 75px;
-	border-radius: 75px;
+	-moz-border-radius:75px;
+	-webkit-border-radius:75px;
+	background-repeat:no-repeat;
+	background-size:75px 75px;
+	border-radius:75px;
+	height:75px;
+	margin:auto;
+	width:75px;
 }
 
 .followInfo {
-
-	margin: auto;
-	text-align: center;
+	margin:auto;
+	text-align:center;
 }
 
-#followTable, td {
-	margin: auto;
-	padding-top: 10px;
-	padding-left: 25px;
-	padding-right: 25px;
-	text-align: center;
+#followTable,td {
+	margin:auto;
+	padding-left:25px;
+	padding-right:25px;
+	padding-top:10px;
+	text-align:center;
 }
+
 @font-face {
-	font-family: "Essays1743";
-	src: url('/fonts/Essays1743.ttf') format("truetype");
+	font-family:Essays1743;
+	src:url(/fonts/Essays1743.ttf) format(truetype);
 }
 
-h2, h3, h4, h5 { 
-	font-family: "Essays1743";
-	display: inline;
+h1,h2,h3,h4,h5 {
+	display:inline;
+	font-family:Essays1743;
 }
 
 .page_form {
-
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	padding: 3px;
-	background-color: rgba(67,106,169,.5); 
-	color: white;
-	font-size: 15px;
-	border: none;
-	width: 200px;
-	margin-left: 0px;
-	float: inherit;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	background-color:rgba(67,106,169,.5);
+	border:none;
+	border-radius:8px;
+	color:#FFF;
+	float:right;
+	font-size:15px;
+	margin-left:2%;
+	padding:3px;
+	width:200px;
 }
 
-#post_buttons {
-
-	border: none;
-	background-color: rgba(67,106,169,.5);
-	margin-left: 25px;
-	color: white;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	height: 25px;
-	width: 75px;
+.post_buttons {
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	background-color:rgba(67,106,169,.5);
+	border:none;
+	border-radius:8px;
+	color:#FFF;
+	float:right;
+	height:25px;
+	margin-left:25px;
+	width:75px;
 }
 
 #login {
-
-	border: none;
-	background-color: rgba(67,106,169,.5);
-	margin-left: 68px;
-	color: white;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	height: 25px;
-	width: 75px;
-	float: right;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	background-color:rgba(67,106,169,.5);
+	border:none;
+	border-radius:8px;
+	color:#FFF;
+	float:right;
+	height:25px;
+	margin-left:68px;
+	width:75px;
 }
 
 #myPosts {
-
-	margin-left: 65%;
+	margin-left:65%;
 }
+
 #navi {
-
-	text-align: center;
-
+	background-image:url(/images/geometry.png);
+	left: 0em;
+	position: fixed;
+	text-align:center;
+	top: 0em;
+	width: 100%;
 }
 
 #navi_ul li {
-
-	display: inline;
-	font-size: 1.2em;
-	padding: 25px;
+	display:inline;
+	font-size:1.2em;
+	padding:25px;
 }
 
-.navi_ul {
-
-	padding-left: 0;
-	margin: auto;
-
+#navi_ul {
+	margin:auto;
+	padding-left:0;
 }
 
 .post {
-
-	background: #93DB70;
-	border-radius: 250px;
-	color: #333333;
-	font-size: .90em;
-	height: 250px;
-	-moz-border-radius: 250px;
-	text-align: center;
-	-webkit-border-radius: 250px;
-	width: 250px;
+	-moz-border-radius:250px;
+	-webkit-border-radius:250px;
+	background:#93DB70;
+	border-radius:250px;
+	color:#333;
+	font-size:.90em;
+	height:250px;
+	text-align:center;
+	width:250px;
 }
 
 .sm_avatar {
-
-	float: left;
-	height: 75px;
-	-moz-border-radius: 75px;
-	-webkit-border-radius: 75px;
-	border-radius: 75px;
-	width: 75px;
+	-moz-border-radius:75px;
+	-webkit-border-radius:75px;
+	border-radius:75px;
+	float:left;
+	height:75px;
+	width:75px;
 }
 
 #radial {
-	width: 500px;
-	height: 500px;
-	background: #93DB70;
-	-moz-border-radius: 500px;
-	-webkit-border-radius: 500px;
-	border-radius: 500px;
-	margin: auto;
+	-moz-border-radius:500px;
+	-webkit-border-radius:500px;
+	background:#93DB70;
+	border-radius:500px;
+	height:500px;
+	margin:auto;
+	width:500px;
 }
 
 #radial_center {
-	margin-left: 100px;
-	margin-right: 100px;
-	text-align: justify;
+	margin-left:100px;
+	margin-right:100px;
+	text-align:justify;
 }
 
 #radial_profile {
-
-	width: 500px;
-	height: 500px;
-	background: #93DB70;
-	-moz-border-radius: 500px;
-	-webkit-border-radius: 500px;
-	border-radius: 500px;
-	position: fixed;
-
+	-moz-border-radius:500px;
+	-webkit-border-radius:500px;
+	background:#93DB70;
+	border-radius:500px;
+	height:500px;
+	margin-left: 10%;
+	position:fixed;
+	width:500px;
 }
 
 #radial_profile_img {
-
-	float: left;
-	height: 150px;
-	width: 150px;
-	-moz-border-radius: 150px;
-	-webkit-border-radius: 150px;
-	border-radius: 150px;
-
-
+	-moz-border-radius:150px;
+	-webkit-border-radius:150px;
+	border-radius:150px;
+	float:left;
+	height:150px;
+	width:150px;
 }
 
 .reg_avatar {
-
-	float: left;
-	height: 150px;
-	-moz-border-radius: 150px;
-	-webkit-border-radius: 150px;
-	border-radius: 150px;
-	width: 150px;
+	-moz-border-radius:150px;
+	-webkit-border-radius:150px;
+	border-radius:150px;
+	float:left;
+	height:150px;
+	width:150px;
 }

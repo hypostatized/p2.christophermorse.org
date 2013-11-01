@@ -1,20 +1,38 @@
 <div id="navi">
-	<ul id="navi_ul"><li>
-		<a href="http://p2.christophermorse.org/">Home</a></li><li><a href="http://p2.christophermorse.org/posts/add">Post</a></li><li><a href="http://p2.christophermorse.org/users/logout">Log out</a></li></ul></div>
-
-
-
+    <div id="navi_ul">
+        <li>
+            <?php if ($user): ?><a href="/users/logout">Logout</a><?php else: ?><a href="/users/login">Login</a><?php endif ?>
+        </li>
+         <?php if ($user): ?>
+        <li><a href="/">My Profile</a></li>
+        <li><a href="/users/editProfile">Edit Profile</a></li>
+        <li><a href="/users/myImg">Edit Avatar</a></li>
+        <li><a href="/posts/add">Post</a></li>
+        <li><a href="/posts/">View Followers</a></li>
+        <li><a href="/posts/users">Find Users</a></li>
+    <?php endif ?>
+    </div>
+</div>
+<br><br>
+<table id="followTable"><tr>
+	<?php $i = 0; ?>
+	<?php if ($i != 0 && $i % 3 == 0): ?><tr><?php endif; ?>
 	<?php foreach($posts as $post): ?>
-		<br><br>
-		<article class="post">
-			<img src="<?=$post['avatar']?>" alt="shaberi" class="sm_avatar">
-			<h2><?=$post['username']?>:</h2><br>
+		
+		<td>
+			<div class="post">
+				<img src="<?=$post['avatar']?>" alt="shaberi" class="sm_avatar">
+				<h2><?=$post['username']?>:</h2><br>
 
-			<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-				<?=Time::display($post['created'])?>
-			</time>
+				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+					<?=Time::display($post['created'])?>
+				</time>
 
-			<p><?=$post['content']?></p>
+				<p><?=$post['content']?></p>
 
-		</article><br>
-	<?php endforeach; ?>
+			</div>	
+		</td>
+    <?php $i++ ?>
+    <?php if ($i % 3 == 0): ?></tr><?php endif; ?>
+<?php endforeach; ?>
+</tr></table>

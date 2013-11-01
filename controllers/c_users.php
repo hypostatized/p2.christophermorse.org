@@ -24,7 +24,7 @@ class users_controller extends base_controller {
         # set time of creation
         # hash password and login token for cookie
         $_POST['created'] = Time::now();
-        $_POST['avatar'] = "/uploads/avatars/shaberi.png";
+        $_POST['avatar'] = "shaberi.png";
         $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
         $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
@@ -124,6 +124,31 @@ class users_controller extends base_controller {
         echo $this->template;
         }
         
+    }
+
+    public function editProfile($error = NULL) {
+
+        # Setup view
+        $this->template->content = View::instance('v_users_editProfile');
+        $this->template->content->error = $error;
+        $this->template->title   = "Edit Profile";
+
+        # Render template
+        echo $this->template;
+
+    }
+
+    public function p_editProfile() {
+
+        # sanitize user entry data
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+        $location = Array("location" => $_POST['location']);
+        $about = Array("about" => $_POST['about']);
+        DB::instance(DB_NAME)->update("users", $location, "WHERE user_id = '".$this->user->user_id."'");
+        DB::instance(DB_NAME)->update("users", $about, "WHERE user_id = '".$this->user->user_id."'");
+
+        Router::redirect('/users/profile');
     }
 
     public function myImg() {

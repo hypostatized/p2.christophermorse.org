@@ -10,10 +10,11 @@ class posts_controller extends base_controller {
         }
     }
 
-    public function add() {
+    public function add($error = NULL) {
 
         # Setup view
         $this->template->content = View::instance('v_posts_add');
+        $this->template->content->error = $error;
         $this->template->title   = "New Post";
 
         # Render template
@@ -40,6 +41,11 @@ class posts_controller extends base_controller {
 
     public function p_add() {
 
+        if(strlen($_POST['content']) > 150) {
+
+            Router::redirect("/posts/add/error");
+        }
+        else {
         # Associate this post with this user
         $_POST['user_id']  = $this->user->user_id;
         $_POST['avatar'] = $this->user->avatar; 
@@ -51,9 +57,8 @@ class posts_controller extends base_controller {
         # Insert
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->insert('posts', $_POST);
-
-        # Quick and dirty feedback
-        echo "Your post has been added. <a href='/posts/add'>Add another</a>";
+        Router::redirect("/users/profile");
+        }
 
     }
 

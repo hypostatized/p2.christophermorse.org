@@ -17,12 +17,17 @@
 	<div id="radial">
 		<img src="/images/shaberi.png" alt="shaberi">
 		<div id="radial_center">
-			<h4>Photo types accepted: gif, jpg, png. Please no larger than 400kb, and for best results resize your image to 150 x 150 pixels.</h4>
-			<form action="/users/pMyImg/" method="post"
-			enctype="multipart/form-data">
-			<label for="file">Filename:</label>
-			<input type="file" name="file" class="page_form"><br>
-			<input type="submit" name="submit" value="Submit" class="post_buttons">
-		</form>
+			<form method="POST" action="/users/p_editProfile">
+				<label for='content'><h3>New Post:</h3></label><br>
+				<?php if(isset($error)): ?>
+				<div class='failtext'>
+					You typed too much, try again!
+				</div>
+			<?php endif; ?>
+				Location: <input type="text" name="location" class="page_form"><br>
+    			About: <textarea name='about' class='content'></textarea>
+				<input type="submit" value="Edit Profile" class="post_buttons">
+			</form>
+			<br><br>
+		</div>
 	</div>
-</div>
