@@ -200,7 +200,7 @@ class users_controller extends base_controller {
                     else
                     {
                         move_uploaded_file($_FILES["file"]["tmp_name"],
-                            "/Users/christophermorse/Sites/p2.christophermorse.org/uploads/avatars/" . $_FILES["file"]["name"]);
+                            "/uploads/avatars/" . $_FILES["file"]["name"]);
                         $filename = $_FILES["file"]["name"];
                         $avatar = Array("avatar" => $filename);
                         DB::instance(DB_NAME)->update("users", $avatar, "WHERE user_id = '".$this->user->user_id."'");
