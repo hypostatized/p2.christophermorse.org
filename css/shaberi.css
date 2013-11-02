@@ -117,7 +117,7 @@ h1,h2,h3,h4,h5 {
 }
 
 #navi {
-	background-image:url(/images/geometry.png);
+	background-color: #93DB70;
 	left: 0em;
 	position: fixed;
 	text-align:center;
@@ -129,6 +129,10 @@ h1,h2,h3,h4,h5 {
 	display:inline;
 	font-size:1.2em;
 	padding:25px;
+}
+
+#navi_ul li a:hover {
+	color: yellow;
 }
 
 #navi_ul {

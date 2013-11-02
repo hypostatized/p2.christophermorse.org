@@ -15,7 +15,7 @@
         </ul>
     </div>
 </div>
-<br><br>
+<br><br><br>
 <table id="followTable"><tr>
     <?php $i = 0; ?>
     <?php if ($i % 5 == 0): ?><tr><?php endif; ?>

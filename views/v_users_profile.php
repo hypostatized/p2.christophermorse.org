@@ -15,7 +15,7 @@
 		</ul>
 	</div>
 </div>
-<br><br>
+<br><br><br>
 <div id="radial_profile">
 	<img src="<?=$user->avatar;?>" alt="<?=$user->username;?>" class="reg_avatar">
 	<div id="radial_center">
@@ -30,7 +30,7 @@
 	<h2>Your Posts:</h2><br><br>
 	<?php foreach($posts as $post): ?>
 		<article class="post">
-			<img src="<?=$post['avatar']?>" alt="<?=$user->username;?>" class="sm_avatar">
+			<img src="<?=$user->avatar;?>" alt="<?=$user->username;?>" class="sm_avatar">
 			<h2><?=$user->username;?>:</h2><br>
 			<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
 				<?=Time::display($post['created'])?>

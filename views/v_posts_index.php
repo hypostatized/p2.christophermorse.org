@@ -15,7 +15,7 @@
         </ul>
     </div>
 </div>
-<br><br>
+<br><br><br>
 <table id="followTable"><tr>
     <?php $i = 0; ?>
     <?php if ($i != 0 && $i % 3 == 0): ?><tr><?php endif; ?>
@@ -23,7 +23,8 @@
 
         <td>
             <div class="post">
-                <img src="<?=$post['avatar']?>" alt="shaberi" class="sm_avatar">
+                <?php $post['avatar'] = "/uploads/avatars/" . $post['avatar'] ?>
+                <img src="<?=$post['avatar'];?>" alt="<?=$post['username']?>" class="sm_avatar">
                 <h2><?=$post['username']?>:</h2><br>
 
                 <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">

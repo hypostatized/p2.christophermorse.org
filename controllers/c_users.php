@@ -101,7 +101,7 @@ class users_controller extends base_controller {
         }
         else {
         $this->template->content = View::instance('v_users_profile');
-        $this->template->title = "Profile of".$this->user->username;
+        $this->template->title = "Profile of " . $this->user->username;
 
 
     $q = 'SELECT
@@ -188,22 +188,22 @@ class users_controller extends base_controller {
                 }
                 else
                 {
-                    echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-                    echo "Type: " . $_FILES["file"]["type"] . "<br>";
-                    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-                    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+                    #Router::redirect('/users/profile');
 
-                    if (file_exists("/uploads/avatars/" . $_FILES["file"]["name"]))
+                    if (file_exists("uploads/avatars/" . $_FILES["file"]["name"]))
                     {
                         echo $_FILES["file"]["name"] . " already exists. ";
                     }
                     else
                     {
-                        move_uploaded_file($_FILES["file"]["tmp_name"],
-                            "../uploads/avatars/" . $_FILES["file"]["tmp_name"]);
-                        $filename = $_FILES["file"]["tmp_name"];
-                        $avatar = Array("avatar" => $filename);
+                        # for security purposes, change the filename of the image
+                        $filename = $_FILES["file"]["name"];
+                        $ext = strtolower(substr(strrchr($filename, '.'), 1)); # get file extension
+                        $newImage = Utils::generate_random_string() . '.' . $ext; # create new image name with extension
+                        move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/avatars/" . $newImage);
+                        $avatar = Array("avatar" => $newImage);
                         DB::instance(DB_NAME)->update("users", $avatar, "WHERE user_id = '".$this->user->user_id."'");
+                        DB::instance(DB_NAME)->update("posts", $avatar, "WHERE user_id = '".$this->user->user_id."'");
                         Router::redirect('/users/profile');
                     }
                 }
