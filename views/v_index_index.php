@@ -2,22 +2,24 @@
 	<? Router::redirect('/users/profile'); ?>
 <?php else: ?>
 
-<div id="navi">
-    <div id="navi_ul">
-        <li>
-            <?php if ($user): ?><a href="/users/logout">Logout</a><?php else: ?><a href="/users/login">Login</a><?php endif ?>
-        </li>
-         <?php if ($user): ?>
-        <li><a href="/">My Profile</a></li>
-        <li><a href="/users/editProfile">Edit Profile</a></li>
-        <li><a href="/users/myImg">Edit Avatar</a></li>
-        <li><a href="/posts/add">Post</a></li>
-        <li><a href="/posts/">View Followers</a></li>
-        <li><a href="/posts/users">Find Users</a></li>
-    <?php endif ?>
-    </div>
-</div>
-<br><br>
+	<div id="navi">
+		<div id="navi_ul">
+			<ul>
+				<li>
+					<?php if ($user): ?><a href="/users/logout">Logout</a><?php else: ?><a href="/users/login">Login</a><?php endif ?>
+				</li>
+				<?php if ($user): ?>
+					<li><a href="/">My Profile</a></li>
+					<li><a href="/users/editProfile">Edit Profile</a></li>
+					<li><a href="/users/myImg">Edit Avatar</a></li>
+					<li><a href="/posts/add">Post</a></li>
+					<li><a href="/posts/">View Followers</a></li>
+					<li><a href="/posts/users">Find Users</a></li>
+				<?php endif ?>
+			</ul>
+		</div>
+	</div>
+	<br><br>
 
 	<div id="radial">
 		<img src="/images/shaberi.png" alt="shaberi">
@@ -37,4 +39,4 @@
 		</div>
 	</div>
 
-	<?php endif;?>
+<?php endif;?>
