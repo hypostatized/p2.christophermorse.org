@@ -118,6 +118,7 @@ h1,h2,h3,h4,h5 {
 
 #navi {
 	background-color: #93DB70;
+	border-bottom: 5px #FFDD55;
 	left: 0em;
 	position: fixed;
 	text-align:center;
