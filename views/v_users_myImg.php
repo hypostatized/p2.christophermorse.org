@@ -22,7 +22,7 @@
 		<h4>Photo types accepted: gif, jpg, png. Please no larger than 400kb, and for best results resize your image to 150 x 150 pixels.</h4>
 		<form action="/users/pMyImg/" method="post"
 		enctype="multipart/form-data">
-		<label for="file">Filename:</label>
+		<h3>Filename:</h3>
 		<input type="file" name="file" class="page_form"><br>
 		<input type="submit" name="submit" value="Submit" class="post_buttons">
 	</form>

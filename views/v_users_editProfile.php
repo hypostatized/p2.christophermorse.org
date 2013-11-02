@@ -20,15 +20,15 @@
 	<img src="/images/shaberi.png" alt="shaberi">
 	<div id="radial_center">
 		<form method="POST" action="/users/p_editProfile">
-			<label for='content'><h3>New Post:</h3></label><br>
+			<h3>Update Your Profile:</h3><br>
 			<?php if(isset($error)): ?>
 				<div class='failtext'>
 					You typed too much, try again!
 				</div>
 			<?php endif; ?>
 			Location: <input type="text" name="location" class="page_form"><br>
-			About: <textarea name='about' class='content'></textarea>
-			<input type="submit" value="Edit Profile" class="post_buttons">
+			About: <textarea name="about" class="content"></textarea>
+			<input type="submit" value="Update Profile" class="post_buttons">
 		</form>
 		<br><br>
 	</div>

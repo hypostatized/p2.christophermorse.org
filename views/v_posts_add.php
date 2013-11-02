@@ -20,7 +20,7 @@
 	<img src="/images/shaberi.png" alt="shaberi">
 	<div id="radial_center">
 		<form method="POST" action="/posts/p_add">
-			<label for='content'><h3>New Post:</h3><br><h5>150 characters max</h5></label><br>
+			<h3>New Post:</h3><br><h5>150 characters max</h5><br>
 			<?php if(isset($error)): ?>
 				<div class='failtext'>
 					150 characters only please.
