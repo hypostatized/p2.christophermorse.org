@@ -41,7 +41,6 @@
 		<?php if ($i == 0 || $i % 5 != 0): ?></td>
 		<? else: ?>
 		<?php if ($i % 5 == 0): ?></td></tr>
-		</td></tr>
 	<?php endif; ?>
 <?php endif; ?>
 <?php $i++; ?>
