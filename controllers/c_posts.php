@@ -1,100 +1,76 @@
-
 <?php
-class posts_controller extends base_controller
+class posts_controller extends base_controller {
 
-{
-    public
-
-    function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
-// Make sure user is logged in if they want to use anything in this controller
-
-        if (!$this->user)
-        {
+        # Make sure user is logged in if they want to use anything in this controller
+        if(!$this->user) {
             Router::redirect('/users/login');
         }
     }
 
-    public
+    public function add($error = NULL) {
 
-    function add($error = NULL)
-    {
-
-// Setup view
-
+        # Setup view
         $this->template->content = View::instance('v_posts_add');
         $this->template->content->error = $error;
-        $this->template->title = "New Post";
+        $this->template->title   = "New Post";
 
-// Render template
-
+        # Render template
         echo $this->template;
+
     }
 
-    public
+    public function follow($user_id_followed) {
 
-    function follow($user_id_followed)
-    {
-
-// Prepare the data array to be inserted
-
+    # Prepare the data array to be inserted
         $data = Array(
-            "created" => Time::now() ,
+            "created" => Time::now(),
             "user_id" => $this->user->user_id,
             "user_id_followed" => $user_id_followed
             );
 
-// Do the insert
-
+    # Do the insert
         DB::instance(DB_NAME)->insert('users_users', $data);
+
+    # Send them back
         Router::redirect("/posts/users");
+
     }
 
-    public
+    public function p_add() {
 
-    function p_add()
-    {
-        if (strlen($_POST['content']) > 150)
-        {
+        if(strlen($_POST['content']) > 150) {
+
             Router::redirect("/posts/add/error");
         }
-        else
-        {
+        else {
+        # Associate this post with this user
+        $_POST['user_id']  = $this->user->user_id;
+        $_POST['username'] = $this->user->username;
+        $_POST['avatar'] = $this->user->avatar; 
 
-// Associate this post with this user
+        # Unix timestamp of when this post was created / modified
+        $_POST['created']  = Time::now();
+        $_POST['modified'] = Time::now();
 
-            $_POST['user_id'] = $this->user->user_id;
-            $_POST['username'] = $this->user->username;
-            $_POST['avatar'] = $this->user->avatar;
-
-// Unix timestamp of when this post was created / modified
-
-            $_POST['created'] = Time::now();
-            $_POST['modified'] = Time::now();
-
-// Insert
-// Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
-
-            DB::instance(DB_NAME)->insert('posts', $_POST);
-            Router::redirect("/users");
+        # Insert
+        # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
+        DB::instance(DB_NAME)->insert('posts', $_POST);
+        Router::redirect("/users/profile");
         }
+
     }
 
-    public
+public function index() {
 
-    function index()
-    {
+    # Set up the View
+    $this->template->content = View::instance('v_posts_index');
+    $this->template->title   = "All Posts";
 
-// Set up the View
-
-        $this->template->content = View::instance('v_posts_index');
-        $this->template->title = "All Posts";
-
-// Query
-
-        $q = 'SELECT
+    # Query
+    $q = 'SELECT
         posts.content,
         posts.created,
         posts.user_id AS post_user_id,
@@ -106,75 +82,63 @@ class posts_controller extends base_controller
         ON posts.user_id = users_users.user_id_followed
         INNER JOIN users
         ON posts.user_id = users.user_id
-        WHERE users_users.user_id = ' . $this->user->user_id . ' 
-        ORDER BY posts.created DESC';
+        WHERE users_users.user_id = '.$this->user->user_id . ' 
+        ORDER BY posts.created DESC' ;
+        
 
-// Run the query, store the results in the variable $posts
+    # Run the query, store the results in the variable $posts
+    $posts = DB::instance(DB_NAME)->select_rows($q);
 
-        $posts = DB::instance(DB_NAME)->select_rows($q);
+    # Pass data to the View
+    $this->template->content->posts = $posts;
 
-// Pass data to the View
+    # Render the View
+    echo $this->template;
 
-        $this->template->content->posts = $posts;
+}
 
-// Render the View
+    public function unfollow($user_id_followed) {
 
-        echo $this->template;
-    }
-
-    public
-
-    function unfollow($user_id_followed)
-    {
-
-// Delete this connection
-
-        $where_condition = 'WHERE user_id = ' . $this->user->user_id . ' AND user_id_followed = ' . $user_id_followed;
+    # Delete this connection
+        $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
         DB::instance(DB_NAME)->delete('users_users', $where_condition);
+
+    # Send them back
         Router::redirect("/posts/users");
+
     }
 
-    public
+    public function users() {
 
-    function users()
-    {
-
-// Set up the View
-
+    # Set up the View
         $this->template->content = View::instance("v_posts_users");
-        $this->template->title = "Users";
+        $this->template->title   = "Users";
 
-// Build the query to get all the users
-
+    # Build the query to get all the users
         $q = "SELECT *
         FROM users";
 
-// Execute the query to get all the users.
-// Store the result array in the variable $users
-
+    # Execute the query to get all the users. 
+    # Store the result array in the variable $users
         $users = DB::instance(DB_NAME)->select_rows($q);
 
-// Build the query to figure out what connections does this user already have?
-// I.e. who are they following
-
+    # Build the query to figure out what connections does this user already have? 
+    # I.e. who are they following
         $q = "SELECT * 
         FROM users_users
-        WHERE user_id = " . $this->user->user_id;
+        WHERE user_id = ".$this->user->user_id;
 
-// Execute this query with the select_array method
-// select_array will return our results in an array and use the "users_id_followed" field as the index.
-// This will come in handy when we get to the view
-// Store our results (an array) in the variable $connections
-
+    # Execute this query with the select_array method
+    # select_array will return our results in an array and use the "users_id_followed" field as the index.
+    # This will come in handy when we get to the view
+    # Store our results (an array) in the variable $connections
         $connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
 
-// Pass data (users and connections) to the view
-
-        $this->template->content->users = $users;
+    # Pass data (users and connections) to the view
+        $this->template->content->users       = $users;
         $this->template->content->connections = $connections;
 
-// Render the view
-
+    # Render the view
         echo $this->template;
     }
 }
