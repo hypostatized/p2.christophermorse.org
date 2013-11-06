@@ -23,7 +23,7 @@
 
 		<td>
 			<div class="post">
-			
+
 				<a href="/users/viewProfile/<?=$post['username']?>"><img src="<?=$post['avatar'];?>" alt="<?=$post['username']?>" class="sm_avatar"></a>
 				<h2><?=$post['username']?>:</h2><br>
 
@@ -36,6 +36,6 @@
 			</div>	
 		</td>
 		<?php $i++ ?>
-		<?php if ($i % 3 == 0): ?></tr><?php endif; ?>
+		<?php if ($i != 0 && $i % 3 == 0): ?></tr><?php endif; ?>
 	<?php endforeach; ?>
 </tr></table>
