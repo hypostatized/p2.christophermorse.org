@@ -26,7 +26,7 @@
 </div>
 
 <div id="myPosts">
-	<h2><?=$whatuser?>'s Posts:</h2><br><br>
+	<h2>Posts:</h2><br><br>
 	<?php foreach($this_posts as $post): ?>
 		<article class="post">
 			<img src="/uploads/avatars/<?=$this_profile['avatar']?>" alt="<?=$this_profile['username']?>" class="sm_avatar">
