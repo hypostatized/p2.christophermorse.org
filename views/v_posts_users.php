@@ -22,7 +22,7 @@
 <?php foreach($users as $user): ?>
 
 <td>
-<img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>">
+<a href="/users/viewProfile/<?=$user['username']?>"><img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>"></a>
 
 <div class="followInfo">
 <?=$user['username']?><br>

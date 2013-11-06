@@ -19,7 +19,15 @@
 <div id="radial">
 <img src="/images/shaberi.png" alt="shaberi">
 <div id="radial_center">
-Please fill out the form to join Shaberi.<br><br>
+<?php if(isset($error) && $error == 'username'): ?>
+<p class="failtext">Username already exists.</p>
+<?php else: ?>
+<?php if(isset($error) && $error == 'form'): ?>
+<p class="failtext">Please fill out all fields.</p>
+<?php else: ?>
+<p>Please fill out the form to join Shaberi.</p>
+<?php endif; ?>
+<?php endif; ?>
 
 <form  method="POST" action="/users/p_signup">
 First Name <input type='text' name='first_name' class="page_form"><br>
@@ -32,9 +40,4 @@ Password <input type='password' name='password' class="page_form"><br>
 <br><br>
 
 </div>
-</div>
-
-<div id="navi">
-<ul id="navi_ul"><li>
-<a href="http://p2.christophermorse.org/about.html">About</a></li><li><a href="http://p1.christophermorse.org">Author</a></li><li><a href="http://www.dwa15.com">DWA15</a></li></ul>
 </div>

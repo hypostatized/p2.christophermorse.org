@@ -99,6 +99,12 @@ h1,h2,h3,h4,h5 {
 	width:75px;
 }
 
+.left {
+	margin-left: 0;
+	left: 0px;
+
+}
+
 #login {
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;

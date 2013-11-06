@@ -38,5 +38,4 @@ Password: <input type="password" name="password" class="page_form"><br>
 </form>
 </div>
 </div>
-
 <?php endif;?>

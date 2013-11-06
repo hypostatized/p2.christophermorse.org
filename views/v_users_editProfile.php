@@ -23,7 +23,7 @@
 <h3>Update Your Profile:</h3><br>
 <?php if(isset($error)): ?>
 <div class='failtext'>
-You typed too much, try again!
+<p>You typed too much, try again!</p>
 </div>
 <?php endif; ?>
 Location: <input type="text" name="location" class="page_form"><br>
