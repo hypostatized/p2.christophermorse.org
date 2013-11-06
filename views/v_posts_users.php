@@ -17,13 +17,11 @@
 </div>
 <br><br><br>
 <table id="followTable">
-	<?php $i = 0; ?>
-	<?php $c = 1; ?>
 	<?php foreach($users as $user): ?>
-		<?php if ($i == 0 || $c % 5 == 0): ?><tr><td>
-		<? else: ?>
+		<? $i = 0; ?>
+		<tr>
+		<? while (i<5): ?>
 		<td>
-		<?php endif; ?>
 
 		<a href="/users/viewProfile/<?=$user['username']?>"><img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>"></a>
 
@@ -38,14 +36,10 @@
 				<a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
 			<?php endif; ?>
 		</div>
-
-		<?php if ($i == 0 || $c % 5 != 0): ?></td>
-		<? else: ?>
-		<?php if ($i != 0 && $c % 5 == 0): ?></td></tr>
-	<?php endif; ?>
-<?php endif; ?>
-<?php $i++; ?>
-<?php $c++; ?>
+		</td>
+		<? $i++ ?>
+	<? endwhile; ?>
+	</tr>
 
 
 <?php endforeach; ?>
