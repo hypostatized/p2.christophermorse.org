@@ -23,7 +23,7 @@
 
 		<td>
 			<div class="post">
-				<?php $post['avatar'] = "/uploads/avatars/" . $post['avatar'] ?>
+			
 				<a href="/users/viewProfile/<?=$post['username']?>"><img src="<?=$post['avatar'];?>" alt="<?=$post['username']?>" class="sm_avatar"></a>
 				<h2><?=$post['username']?>:</h2><br>
 
