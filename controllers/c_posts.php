@@ -116,7 +116,7 @@ public function index() {
 
     # Build the query to get all the users
         $q = "SELECT *
-        FROM users ORDER BY username DESC";
+        FROM users ORDER BY username ASC";
 
     # Execute the query to get all the users. 
     # Store the result array in the variable $users
