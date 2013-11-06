@@ -39,11 +39,13 @@
 
 			</div>	
 
-			<?php if ($i == 0 || $i % 3 != 0): ?></td>
+			<?php if ($i == 0 || $i % 3 != 0): ?>
+				</td>
 			<? else: ?>
 			<?php if ($i % 3 == 0): ?>
 			</td></tr>
 		<?php endif; ?>
-		<?php $i++ ?>
-	<?php endforeach; ?>
+	<?php endif; ?>
+	<?php $i++ ?>
+<?php endforeach; ?>
 </table>
