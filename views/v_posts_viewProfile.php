@@ -19,7 +19,7 @@
 <div id="radial_profile">
 	<img src="/uploads/avatars/<?=$this_profile['avatar']?>" alt="<?=$this_profile['username']?>" class="reg_avatar">
 	<div id="radial_center">
-		<h2><?=$post['username']?></h2><br><br><br><br><br>
+		<h2><?=$this_user?></h2><br><br><br><br><br>
 		<h3><span class="left">Location:</span></h3><p><?=$this_profile['location'];?></p>
 		<h3><span class="left">About Me:</span></h3><p><?=$this_profile['about'];?></p>
 	</div>

@@ -44,6 +44,7 @@ class users_controller extends base_controller
             $this_profile = DB::instance(DB_NAME)->select_row($q);
             $this->template->content->this_profile = $this_profile;
             $this->template->content->this_posts = $this_posts;
+            $this->template->content->this_user = $this_user;
             echo $this->template;
         }
     }
