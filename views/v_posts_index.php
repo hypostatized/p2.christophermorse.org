@@ -17,10 +17,11 @@
 </div>
 <br><br><br>
 <table id="followTable">
+<tr>
 	<?php $i = 0; ?>
 	<?php foreach($posts as $post): ?>
 		<?php if ($i == 0 || $i % 3 == 0): ?>
-			<tr><td>
+			<td>
 			<? else: ?>
 			<td>
 			<?php endif; ?>
@@ -41,11 +42,13 @@
 
 			<?php if ($i == 0 || $i % 3 != 0): ?>
 				</td>
+				<?php $i++ ?>
 			<? else: ?>
 			<?php if ($i % 3 == 0): ?>
-			</td></tr>
+			</td></tr><tr>
+				<?php $i++ ?>
 		<?php endif; ?>
 	<?php endif; ?>
-	<?php $i++ ?>
+
 <?php endforeach; ?>
 </table>
