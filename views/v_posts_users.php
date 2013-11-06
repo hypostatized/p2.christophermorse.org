@@ -19,7 +19,7 @@
 <table id="followTable">
 	<tr>
 		<?php $i = 0; ?>
-		<?php $c = 0; ?>
+		<?php $c = 1; ?>
 		<?php foreach($users as $user): ?>
 			<?php if ($i == 0 || $c % 5 == 0): ?>
 				<td>
