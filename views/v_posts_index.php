@@ -18,10 +18,14 @@
 <br><br><br>
 <table id="followTable">
 	<?php $i = 0; ?>
-	<?php if ($i != 0 && $i % 3 == 0): ?><tr><?php endif; ?>
 	<?php foreach($posts as $post): ?>
+		<?php if ($i = 0 || $i % 3 == 0): ?>
+			<tr><td>
+			<? else: ?>
+			<td>
+			<?php endif; ?>
 
-		<td>
+
 			<div class="post">
 
 				<a href="/users/viewProfile/<?=$post['username']?>"><img src="<?=$post['avatar'];?>" alt="<?=$post['username']?>" class="sm_avatar"></a>
@@ -34,8 +38,12 @@
 				<p><?=$post['content']?></p>
 
 			</div>	
-		</td>
+
+			<?php if ($i = 0 || $i % 3 != 0): ?></td>
+			<? else: ?>
+			<?php if ($i % 3 == 0): ?>
+			</td></tr>
+		<?php endif; ?>
 		<?php $i++ ?>
-		<?php if ($i != 0 && $i % 3 == 0): ?></tr><?php endif; ?>
 	<?php endforeach; ?>
 </table>
