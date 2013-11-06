@@ -261,7 +261,8 @@ class users_controller extends base_controller
 
 // sanitize user entry data
 
-            $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+            # $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+            # already sanitized by the Core
             $location = Array(
                 "location" => $_POST['location']
                 );
