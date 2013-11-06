@@ -1,6 +1,7 @@
 <div id="navi">
 	<div id="navi_ul">
 		<ul>
+			<li><a href="/">Home</a></li>
 			<li><a href="/about.html">About Shaberi</a></li>
 			<li><a href="http://p1.christophermorse.org">Author</a></li>
 			<li><a href="http://www.dwa15.com">DWA 15</a></li>
