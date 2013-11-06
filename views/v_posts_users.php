@@ -40,7 +40,7 @@
 
 		<?php if ($i == 0 || $i - 1 % 5 != 0): ?></td>
 		<? else: ?>
-		<?php if ($i % 5 == 0): ?></td></tr>
+		<?php if ($i != 0 && $i - 1 % 5 == 0): ?></td></tr>
 	<?php endif; ?>
 <?php endif; ?>
 <?php $i++; ?>
