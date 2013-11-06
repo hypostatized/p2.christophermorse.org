@@ -17,39 +17,39 @@
 </div>
 <br><br><br>
 <table id="followTable">
-<tr>
-	<?php $i = 0; ?>
-	<?php $c = 1; ?>
-	<?php foreach($posts as $post): ?>
-		<?php if ($i == 0 || $c % 3 == 0): ?>
-			<td>
-			<? else: ?>
-			<td>
-			<?php endif; ?>
+	<tr>
+		<?php $i = 0; ?>
+		<?php $c = 1; ?>
+		<?php foreach($posts as $post): ?>
+			<?php if ($i == 0 || $c % 3 == 0): ?>
+				<td>
+				<? else: ?>
+				<td>
+				<?php endif; ?>
 
 
-			<div class="post">
+				<div class="post">
 
-				<a href="/users/viewProfile/<?=$post['username']?>"><img src="<?=$post['avatar'];?>" alt="<?=$post['username']?>" class="sm_avatar"></a>
-				<h2><?=$post['username']?>:</h2><br>
+					<a href="/users/viewProfile/<?=$post['username']?>"><img src="<?=$post['avatar'];?>" alt="<?=$post['username']?>" class="sm_avatar"></a>
+					<h2><?=$post['username']?>:</h2><br>
 
-				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-					<?=Time::display($post['created'])?>
-				</time>
+					<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+						<?=Time::display($post['created'])?>
+					</time>
 
-				<p><?=$post['content']?></p>
+					<p><?=$post['content']?></p>
 
-			</div>	
+				</div>	
 
-			<?php if ($i == 0 || $c % 3 != 0): ?>
+				<?php if ($i == 0 || $c % 3 != 0): ?>
 				</td>
 				<?php $i++ ?>
 				<?php $c++ ?>
 			<? else: ?>
 			<?php if ($i != 0 && $c % 3 == 0): ?>
 			</td></tr><tr>
-				<?php $i++ ?>
-				<?php $c++ ?>
+			<?php $i++ ?>
+			<?php $c++ ?>
 		<?php endif; ?>
 	<?php endif; ?>
 

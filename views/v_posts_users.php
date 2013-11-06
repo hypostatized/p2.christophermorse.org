@@ -16,36 +16,41 @@
 	</div>
 </div>
 <br><br><br>
-<table id="followTable"><tr>
-	<?php $i = 0; ?>
-	<?php foreach($users as $user): ?>
-		<?php if ($i == 0 || $i % 5 == 0): ?><td>
-		<? else: ?>
-		<td>
+<table id="followTable">
+	<tr>
+		<?php $i = 0; ?>
+		<?php $c = 0; ?>
+		<?php foreach($users as $user): ?>
+			<?php if ($i == 0 || $c % 5 == 0): ?>
+				<td>
+				<? else: ?>
+				<td>
+				<?php endif; ?>
+
+				<a href="/users/viewProfile/<?=$user['username']?>"><img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>"></a>
+
+				<div class="followInfo">
+					<?=$user['username']?><br>
+					<!-- If there exists a connection with this user, show a unfollow link -->
+					<?php if(isset($connections[$user['user_id']])): ?>
+						<a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
+
+						<!-- Otherwise, show the follow link -->
+					<?php else: ?>
+						<a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
+					<?php endif; ?>
+				</div>
+
+				<?php if ($i == 0 || $c % 5 != 0): ?>
+				</td>
+				<?php $i++; ?>
+			<? else: ?>
+			<?php if ($i != 0 && $c % 5 == 0): ?></td></tr><tr>
+				<?php $i++; ?>
+				<?php $c++; ?>
+			<?php endif; ?>
 		<?php endif; ?>
 
-		<a href="/users/viewProfile/<?=$user['username']?>"><img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>"></a>
-
-		<div class="followInfo">
-			<?=$user['username']?><br>
-			<!-- If there exists a connection with this user, show a unfollow link -->
-			<?php if(isset($connections[$user['user_id']])): ?>
-				<a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
-
-				<!-- Otherwise, show the follow link -->
-			<?php else: ?>
-				<a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
-			<?php endif; ?>
-		</div>
-
-		<?php if ($i == 0 || $i % 5 != 0): ?></td>
-		<?php $i++; ?>
-		<? else: ?>
-		<?php if ($i != 0 && $i % 5 == 0): ?></td></tr><tr>
-		<?php $i++; ?>
-	<?php endif; ?>
-<?php endif; ?>
-
-<?php endforeach; ?>
+	<?php endforeach; ?>
 
 </table>
