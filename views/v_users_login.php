@@ -16,7 +16,7 @@
 				<p>Login failed. Please double check your email and password.</p>
 			</div>
 		<? else: ?>
-		<?php if(isset($error) && $error == 'newuser') ?>
+		<?php if(isset($error) && $error == 'newuser'): ?>
 		<p>Thanks for signing up! Please log in:</p>
 	<? else: ?>
 	<p>Please log in:</p>
