@@ -19,7 +19,7 @@
 <table id="followTable">
 	<?php $i = 0; ?>
 	<?php foreach($posts as $post): ?>
-		<?php if ($i = 0 || $i % 3 == 0): ?>
+		<?php if ($i == 0 || $i % 3 == 0): ?>
 			<tr><td>
 			<? else: ?>
 			<td>
@@ -39,7 +39,7 @@
 
 			</div>	
 
-			<?php if ($i = 0 || $i % 3 != 0): ?></td>
+			<?php if ($i == 0 || $i % 3 != 0): ?></td>
 			<? else: ?>
 			<?php if ($i % 3 == 0): ?>
 			</td></tr>
