@@ -28,7 +28,7 @@
 			<?php endif; ?>
 			Location: <input type="text" name="location" class="page_form"><br>
 			About: <textarea name="about" class="content"></textarea>
-			<input type="submit" value="Update Profile" class="post_buttons">
+			<input type="submit" value="Update" class="post_buttons">
 		</form>
 		<br><br>
 	</div>

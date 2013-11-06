@@ -27,7 +27,7 @@
 				</div>
 			<?php endif; ?>
 			<textarea name='content' class='content'></textarea>
-			<input type="submit" value="New post" class="post_buttons">
+			<input type="submit" value="Post" class="post_buttons">
 		</form>
 		<br><br>
 	</div>

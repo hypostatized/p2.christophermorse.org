@@ -49,9 +49,6 @@ class posts_controller extends base_controller
 // Do the insert
 
         DB::instance(DB_NAME)->insert('users_users', $data);
-
-// Send them back
-
         Router::redirect("/posts/users");
     }
 
@@ -134,9 +131,6 @@ class posts_controller extends base_controller
 
         $where_condition = 'WHERE user_id = ' . $this->user->user_id . ' AND user_id_followed = ' . $user_id_followed;
         DB::instance(DB_NAME)->delete('users_users', $where_condition);
-
-// Send them back
-
         Router::redirect("/posts/users");
     }
 

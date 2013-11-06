@@ -11,10 +11,13 @@
 <div id="radial">
 	<img src="/images/shaberi.png" alt="shaberi">
 	<div id="radial_center">
-		<?php if(isset($error)): ?>
+	<?php if(isset($error) && $error == "fail"): ?>
 			<div class='failtext'>
 				<p>Login failed. Please double check your email and password.</p>
 			</div>
+		<? else: ?>
+		<?php if(isset($error) && $error == "newuser") ?>
+		<p>Thanks for signing up! Please log in:</p>
 		<? else: ?>
 		<p>Please log in:</p>
 	<?php endif; ?>

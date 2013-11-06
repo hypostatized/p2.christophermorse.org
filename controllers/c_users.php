@@ -111,7 +111,7 @@ class users_controller extends base_controller
 // add user
 
                 $user_id = DB::instance(DB_NAME)->insert("users", $_POST);
-                Router::redirect('/users/login');
+                Router::redirect('/users/login/newuser');
             }
         }
     }
@@ -149,7 +149,7 @@ class users_controller extends base_controller
         $token = DB::instance(DB_NAME)->select_field($q);
         if (!$token)
         {
-            Router::redirect("/users/login/error");
+            Router::redirect("/users/login/error/fail");
         }
         else
         {
