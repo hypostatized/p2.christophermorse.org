@@ -16,29 +16,37 @@
 	</div>
 </div>
 <br><br><br>
-<table id="followTable"><tr>
+<table id="followTable">
 	<?php $i = 0; ?>
-	<?php if ($i % 5 == 0): ?><tr><?php endif; ?>
 	<?php foreach($users as $user): ?>
-
+		<?php if ($i == 0 || $i % 5 == 0): ?><tr><td>
+		<? else: ?>
 		<td>
-			<a href="/users/viewProfile/<?=$user['username']?>"><img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>"></a>
+		<?php endif; ?>
 
-			<div class="followInfo">
-				<?=$user['username']?><br>
-				<!-- If there exists a connection with this user, show a unfollow link -->
-				<?php if(isset($connections[$user['user_id']])): ?>
-					<a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
+		<a href="/users/viewProfile/<?=$user['username']?>"><img src="/uploads/avatars/<?=$user['avatar']?>" class="sm_avatar" alt="<?=$user['username']?>"></a>
 
-					<!-- Otherwise, show the follow link -->
-				<?php else: ?>
-					<a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
-				<?php endif; ?>
-			</div>
-		</td>
-		<?php $i++; ?>
+		<div class="followInfo">
+			<?=$user['username']?><br>
+			<!-- If there exists a connection with this user, show a unfollow link -->
+			<?php if(isset($connections[$user['user_id']])): ?>
+				<a href='/posts/unfollow/<?=$user['user_id']?>'>Unfollow</a>
 
-		<?php if ($i % 5 == 0): ?></tr><?php endif; ?>
-	<?php endforeach; ?>
+				<!-- Otherwise, show the follow link -->
+			<?php else: ?>
+				<a href='/posts/follow/<?=$user['user_id']?>'>Follow</a>
+			<?php endif; ?>
+		</div>
 
-</tr></table>
+		<?php if ($i == 0 || $i % 5 != 0): ?></td>
+		<? else: ?>
+		<?php if ($i % 5 == 0): ?></td></tr>
+		</td></tr>
+	<?php endif; ?>
+<?php endif; ?>
+<?php $i++; ?>
+
+
+<?php endforeach; ?>
+
+</table>
