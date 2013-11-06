@@ -19,8 +19,9 @@
 <table id="followTable">
 <tr>
 	<?php $i = 0; ?>
+	<?php $c = 1; ?>
 	<?php foreach($posts as $post): ?>
-		<?php if ($i == 0 || $i % 3 == 0): ?>
+		<?php if ($i == 0 || $c % 3 == 0): ?>
 			<td>
 			<? else: ?>
 			<td>
@@ -40,13 +41,15 @@
 
 			</div>	
 
-			<?php if ($i == 0 || $i % 3 != 0): ?>
+			<?php if ($i == 0 || $c % 3 != 0): ?>
 				</td>
 				<?php $i++ ?>
+				<?php $c++ ?>
 			<? else: ?>
-			<?php if ($i % 3 == 0): ?>
+			<?php if ($i != 0 && $c % 3 == 0): ?>
 			</td></tr><tr>
 				<?php $i++ ?>
+				<?php $c++ ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
