@@ -19,7 +19,7 @@
 <table id="followTable"><tr>
 	<?php $i = 0; ?>
 	<?php foreach($users as $user): ?>
-		<?php if ($i == 0 || $i % 5 == 0): ?><tr><td>
+		<?php if ($i == 0 || $i % 5 == 0): ?><td>
 		<? else: ?>
 		<td>
 		<?php endif; ?>
@@ -40,11 +40,10 @@
 
 		<?php if ($i == 0 || $i % 5 != 0): ?></td>
 		<? else: ?>
-		<?php if ($i != 0 && $i % 5 == 0): ?></td></tr>
+		<?php if ($i != 0 && $i % 5 == 0): ?></td></tr><tr>
+		<?php $i++; ?>
 	<?php endif; ?>
 <?php endif; ?>
-<?php $i++; ?>
-
 
 <?php endforeach; ?>
 
